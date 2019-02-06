@@ -1,17 +1,38 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>POST</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-card>
+    <img src="assets/imgs/IMG_0785.JPG" alt="article image" >
+  </ion-card>
+  <ion-card-content>
+    <ion-row>
+      <ion-col col-6 align-self-center="">
+        <strong>Cetatea Rasnov</strong>
+      </ion-col>
+      <ion-col>
+        <button ion-button clear (click)="clickLike()"><ion-icon name="heart"></ion-icon>&nbsp; {{countLike}}</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button clear (click)="clickComment()">
+          <ion-icon name="chatboxes"></ion-icon>&nbsp; {{comments.length}}
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+
+  <div *ngIf="comments.length" >
+    <h3 align="center">Comments</h3>
+    <ion-card *ngFor="let c of comments">
+      <ion-card-header align-self-center>
+        <ion-icon name="contact"></ion-icon>&nbsp;&nbsp;<strong>{{c.name}}</strong>
+      </ion-card-header>
+      <ion-card-content>
+        {{c.comment}}
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
